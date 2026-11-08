@@ -61,7 +61,7 @@
         <div class="prism-doc-body">
           
 <h2>程序员每天都在经历的“进度条焦虑症”</h2>
-<p>对于国内全栈开发者、算法工程师与DevOps运维人员而言，日常工作中最消耗耐心与心流状态的场景，往往不是编写复杂的业务逻辑代码，而是面对黑底白字的命令行终端苦苦等待：执行一条<code>git clone</code>拉取包含子模块的开源项目，速度只有可怜的十几KB/s并在最后关头报错<code>RPC failed; curl 56 Recv failure</code>；或者在构建容器化微服务时，执行<code>docker pull</code>拉取海外官方镜像频频卡在连接超时；又或是执行<code>brew update</code>、<code>npm install</code>与<code>pip install</code>下载跨国依赖包时动辄耗时半小时。这些痛点本质上都源于跨国公网对未加速终端流量的劣化与干扰。</p>
+<p>对于国内全栈开发者、算法工程师与DevOps运维人员而言，日常工作中最消耗耐心与心流状态的场景，往往不是编写复杂的业务逻辑代码，而是面对黑底白字的命令行终端苦苦等待：执行一条<code>git clone</code>拉取包含子模块的开源项目，速度只有可怜的十几KB/s并在最后关头报错<code>RPC failed; curl 56 Recv failure</code>；或者在构建容器化微服务时，执行<code>docker pull</code>拉取海外镜像频频卡在连接超时；又或是执行<code>brew update</code>、<code>npm install</code>与<code>pip install</code>下载跨国依赖包时动辄耗时半小时。这些痛点本质上都源于跨国公网对未加速终端流量的劣化与干扰。</p>
 
 <h2>为什么开启了桌面客户端，命令行终端里依然慢如蜗牛？</h2>
 <p>这是无数初学者乃至资深程序员经常踩中的经典误区。当你在Windows或macOS上打开代理客户端并勾选“系统代理（System Proxy）”时，它实际上仅仅修改了操作系统桌面图形界面的HTTP/HTTPS环境变量。Chrome浏览器能够乖乖遵守这一设定，但运行在终端底层的命令行工具（如Git的SSH协议通道、后台独立运行的Docker Daemon守护进程以及部分Go/Rust编译工具链）默认根本不会读取桌面系统代理配置，它们依然在通过拥堵的本地公网裸连海外服务器。</p>
