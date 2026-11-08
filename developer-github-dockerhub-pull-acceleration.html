@@ -67,7 +67,7 @@
 <p>这是无数初学者乃至资深程序员经常踩中的经典误区。当你在Windows或macOS上打开代理客户端并勾选“系统代理（System Proxy）”时，它实际上仅仅修改了操作系统桌面图形界面的HTTP/HTTPS环境变量。Chrome浏览器能够乖乖遵守这一设定，但运行在终端底层的命令行工具（如Git的SSH协议通道、后台独立运行的Docker Daemon守护进程以及部分Go/Rust编译工具链）默认根本不会读取桌面系统代理配置，它们依然在通过拥堵的本地公网裸连海外服务器。</p>
 
 <h3>方案一：开启TUN虚拟网卡模式（一劳永逸的内核级接管）</h3>
-<p>想要在不修改任何命令行配置文件的前提下，让电脑上所有进程全面享受IEPL专线加速，最优雅的方案是在客户端中直接启用<strong>TUN模式（Virtual Network Interface）</strong>。启用后，客户端会在操作系统内核网络栈中创建一个高性能虚拟网卡，并通过路由表劫持将机器发出的所有TCP与UDP流量透明接管。根据<a href="https://tizilab.net/" target="_blank">开发者常用跨国网络提速工具排行</a>中的实测基准，在开启Sing-box或Mihomo内核的TUN模式并配合Fake-IP解析后，无论是终端SSH连接还是IDE内置的AI代码补全插件，均能实现零配置满速直通。</p>
+<p>想要在不修改任何命令行配置文件的前提下，让电脑上所有进程全面享受IEPL专线加速，最优雅的方案是在客户端中直接启用<strong>TUN模式（Virtual Network Interface）</strong>。启用后，客户端会在操作系统内核网络栈中创建一个高性能虚拟网卡，并通过路由表劫持将机器发出的所有TCP与UDP流量透明接管。根据<a href="#plans" target="_blank">开发者常用跨国网络提速工具排行</a>中的实测基准，在开启Sing-box或Mihomo内核的TUN模式并配合Fake-IP解析后，无论是终端SSH连接还是IDE内置的AI代码补全插件，均能实现零配置满速直通。</p>
 
 <h3>方案二：为Git单独配置HTTPS与SSH精细化分流</h3>
 <p>如果你在远程Linux服务器上工作，或者更偏爱轻量级的按需加速，那么针对Git进行专属配置则是必备技能。对于HTTPS协议的仓库地址，只需在终端执行配置命令将<code>github.com</code>域名精准指向本地SOCKS5混合端口；而更为关键且常被忽略的是<strong>SSH协议（22端口）</strong>加速。</p>
